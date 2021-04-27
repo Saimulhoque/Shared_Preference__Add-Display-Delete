@@ -16,7 +16,7 @@ import android.widget.Toast;
 public class MainActivity extends AppCompatActivity {
 
     EditText editText;
-    Button btnsave, btnshow;
+    Button btnsave, btnshow, btndelete;
     TextView textView;
     SharedPreferences sharedPreferences;
 
@@ -30,6 +30,7 @@ public class MainActivity extends AppCompatActivity {
         editText = findViewById(R.id.edit_text);
         btnsave = findViewById(R.id.btnsave);
         btnshow = findViewById(R.id.btndisplay);
+        btndelete = findViewById(R.id.btndelete);
         textView = findViewById(R.id.show_text);
 
         btnsave.setOnClickListener(new View.OnClickListener() {
@@ -50,5 +51,11 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        btndelete.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                sharedPreferences.edit().remove("Message").commit();
+            }
+        });
     }
 }
